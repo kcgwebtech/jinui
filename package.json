@@ -1,0 +1,27 @@
+{
+  "name": "jinui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever start api",
+    "stop": "forever stop api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcgwebtech/jinui.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcgwebtech/jinui/issues"
+  },
+  "homepage": "https://github.com/kcgwebtech/jinui#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "forever": "^0.15.3",
+    "mysql2": "^1.6.1",
+    "sequelize": "^4.41.0"
+  }
+}
