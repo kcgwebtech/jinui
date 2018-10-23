@@ -3,6 +3,8 @@ const users = require('./model/users'); // users 테이블 모델
 const app = express(); // express 생성
 const port = 8888; // 서버를 열 때 사용되는 포트 정보
 
+app.use(express.json());
+
 /**
  * hi 라우터
  */
@@ -14,10 +16,13 @@ app.get('/hi', (req, res) => {
 /**
  * create 라우터 (데이터 생성)
  */
-app.get('/create', (req, res) => {
+app.post('/create', (req, res) => {
+    const user_id = req.body.user_id;
+    const user_pw = req.body.user_pw;
+
     users.create({
-        user_id: 'hi1',
-        user_pw: 'hi2',
+        user_id: user_id,
+        user_pw: user_pw,
     }).then((user) => { // 콜백함수
         res.json({
             status: true,
@@ -33,9 +38,9 @@ app.get('/create', (req, res) => {
 
 
 /**
- * select 라우터 (데이터 조회)
+ * read 라우터 (데이터 조회)
  */
-app.get('/select/:user_id', (req, res) => {
+app.get('/read/:user_id', (req, res) => {
     const user_id = req.param('user_id');
 
     users.findOne({

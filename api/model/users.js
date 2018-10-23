@@ -1,4 +1,5 @@
-const { Sequelize, database } = require('./database');
+const Sequelize = require('sequelize');
+const database = require('./database');
 
 // users 모델(테이블) 정의
 const users = database.define('users', {
