@@ -41,7 +41,7 @@ app.post('/create', (req, res) => {
  * read 라우터 (데이터 조회)
  */
 app.get('/read/:user_id', (req, res) => {
-    const user_id = req.param('user_id');
+    const user_id = req.params.user_id;
 
     users.findOne({
         where: {
@@ -60,6 +60,7 @@ app.get('/read/:user_id', (req, res) => {
     });
 });
 
+app.use('/register', require('./register'));
 
 app.listen(port); // port로 서버 열기
 console.log('start server with 8888!');
