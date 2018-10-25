@@ -1,12 +1,19 @@
 const Sequelize = require('sequelize');
+const dbConfig = require('../config/db');
+
+const name = dbConfig.name;
+const id = dbConfig.id;
+const password = dbConfig.password;
+const host = dbConfig.host;
+const dbms = dbConfig.dbms;
 
 const database = new Sequelize(
-    'account', // 테이블명
-    'root', // 아이디
-    'wlsdml1103', // 비밀번호
+    name,
+    id,
+    password,
     {
-        host: 'localhost',
-        dialect: 'mysql',
+        host: host,
+        dialect: dbms,
     }
 );
 

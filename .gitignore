@@ -76,5 +76,6 @@ typings/
 /.idea
 /*.iml
 
-# JWT Config
+# Config
 /api/config/jwt.json
+/api/config/db.json
