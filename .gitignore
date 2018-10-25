@@ -75,3 +75,6 @@ typings/
 # Intellij
 /.idea
 /*.iml
+
+# JWT Config
+/api/config/jwt.json
