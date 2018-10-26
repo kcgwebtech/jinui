@@ -1,3 +1,11 @@
+window.onload = function() {
+    if (document.cookie.includes('user')) {
+        // TODO JWT 유효성 검사
+        alert('이미 로그인되어 있습니다.');
+        location.href='/';
+    }
+};
+
 function login() {
     const id = document.querySelector('.id').value;
     const pw = document.querySelector('.pw').value;

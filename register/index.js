@@ -21,7 +21,7 @@ function register() {
         } else {
             const message = response.data.message;
             alert(message);
-            location.href = '/';
+            location.href = '/login';
         }
     };
 }
