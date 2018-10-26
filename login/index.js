@@ -1,23 +1,26 @@
 function login() {
-    const id = document.querySelector('.id').textContent;
-    const pw = document.querySelector('.pw').textContent;
-
-    const xmlHttp = new XMLHttpRequest();
-    xmlHttp.open('POST', '/api/auth/login');
-    xmlHttp.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-    xmlHttp.send(JSON.stringify({
+    const id = document.querySelector('.id').value;
+    const pw = document.querySelector('.pw').value;
+    const data = {
         user_id: id,
         user_pw: pw,
-    }));
+    };
 
-    const result = xmlHttp.response;
-    console.log(result);
+    const request = new XMLHttpRequest();
+    request.open('POST', '/api/auth/login', true);
+    request.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    request.send(JSON.stringify(data));
 
-    if (result.hasOwnProperty('error')) {
-        const message = result.error.message;
-        alert(message);
-    } else {
-        alert('로그인에 성공했습니다!');
-        location.href = '/';
-    }
+    request.onload = function() {
+        const response = request.response;
+        console.log(response);
+
+        if (response.hasOwnProperty('error')) {
+            const message = response.error.message;
+            alert(message);
+        } else {
+            alert('로그인에 성공했습니다!');
+            location.href = '/';
+        }
+    };
 }
