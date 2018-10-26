@@ -1,6 +1,6 @@
 function register() {
-    const id = document.getElementsByClassName('id');
-    const pw = document.getElementsByClassName('pw');
+    const id = document.querySelector('.id').textContent;
+    const pw = document.querySelector('.pw').textContent;
 
     const xmlHttp = new XMLHttpRequest();
     xmlHttp.open('POST', '/api/auth/register');
