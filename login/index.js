@@ -12,7 +12,7 @@ function login() {
     request.send(JSON.stringify(data));
 
     request.onload = function() {
-        const response = request.response;
+        const response = JSON.parse(request.response);
         console.log(response);
 
         if (response.hasOwnProperty('error')) {
