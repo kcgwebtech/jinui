@@ -31,7 +31,7 @@ router.post('/', (req, res) => {
         if (created) {
             res.json({
                 data: {
-                    messgae: '성공적으로 가입되었습니다!'
+                    message: '성공적으로 가입되었습니다!'
                 }
             })
         } else {
