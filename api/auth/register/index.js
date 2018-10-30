@@ -7,7 +7,7 @@ router.post('/', (req, res) => {
     const user_id = req.body.user_id;
     const user_pw = req.body.user_pw;
 
-    if (!(user_pw && user_pw)) {
+    if (!(user_id && user_pw)) {
         res.json({
             error: {
                 message: '올바른 ID 또는 PW가 아닙니다.',
