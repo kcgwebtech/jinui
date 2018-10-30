@@ -47,6 +47,16 @@ class Token {
         console.log('@checkToken', req.originalUrl);
 
         const tokens = req.cookies.user;
+
+        if (!tokens) {
+            return res.json({
+                error: {
+                    name: 'UserLogout',
+                    message: '로그인해주세요.'
+                }
+            });
+        }
+
         const accessToken = tokens.token;
         const refreshToken = tokens.refreshToken;
         const userId = req.body.user_id || req.query.user_id;
