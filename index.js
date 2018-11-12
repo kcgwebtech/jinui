@@ -3,6 +3,7 @@ const logoutBtn = document.querySelector('.logout__btn');
 const registerBtn = document.querySelector('.register__btn');
 const welcomeMsg = document.querySelector('.welcome__message');
 
+// 페이지 로드시 실행되는 이벤트 함수
 window.onload = function() {
     const isLogin = document.cookie.includes('user'); // TODO JWT 유효성 검사
 
@@ -11,14 +12,17 @@ window.onload = function() {
     registerBtn.hidden = isLogin;
     logoutBtn.hidden = !isLogin;
 
-    const userCookie = JSON.parse(getCookie('user').slice(2));
-    const accessTokenIncoded = userCookie.token;
+    if (isLogin) {
+        const userCookie = JSON.parse(getCookie('user').slice(2));
+        const accessTokenIncoded = userCookie.token;
 
-    const userId = parseJwt(accessTokenIncoded).user_id;
+        const userId = parseJwt(accessTokenIncoded).user_id;
 
-    welcomeMsg.textContent = userId + '님 환영합니다.'
+        welcomeMsg.textContent = userId + '님 환영합니다.';
+    }
 };
 
+// 저장된 쿠키를 가져오는 함수
 function getCookie(cname) {
     const name = cname + "=";
     const decodedCookie = decodeURIComponent(document.cookie);
@@ -35,6 +39,7 @@ function getCookie(cname) {
     return "";
 }
 
+// jwt 정보를 가져오는 함수
 function parseJwt(token) {
     const base64Url = token.split('.')[1];
     const base64 = base64Url.replace('-', '+').replace('_', '/');
