@@ -22,6 +22,16 @@ window.onload = function() {
     }
 };
 
+function logout() {
+    const request = new XMLHttpRequest();
+    request.open('POST', '/api/auth/logout', true);
+    request.send();
+
+    request.onload = function() {
+        window.location.href = '/';
+    }
+}
+
 // 저장된 쿠키를 가져오는 함수
 function getCookie(cname) {
     const name = cname + "=";
