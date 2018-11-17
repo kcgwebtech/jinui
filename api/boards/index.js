@@ -19,4 +19,22 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+    const id = req.params.id;
+
+    boards.findOne({
+        where: {
+            id: id
+        }
+    }).then((board) => {
+       res.json({
+           data: board,
+       });
+    }).catch((err) => {
+        res.json({
+            error: err
+        });
+    });
+});
+
 module.exports = router;
